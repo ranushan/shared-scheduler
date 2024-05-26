@@ -26,7 +26,6 @@ public class BatchConfiguration {
     private final String className;
     private final String interval;
     private final boolean modulate;
-    private final boolean enableStatistics;
 
     protected BatchConfiguration(BatchConfiguration.BatchConfigurationBuilder builder) {
         this.name = builder.name;
@@ -34,7 +33,6 @@ public class BatchConfiguration {
         this.className = builder.className;
         this.interval = builder.interval;
         this.modulate = builder.modulate;
-        this.enableStatistics = builder.enableStatistics;
     }
 
     /**
@@ -68,10 +66,9 @@ public class BatchConfiguration {
                         "className": %s,
                         "type": %s,
                         "interval": %s,
-                        "modulate": %b,
-                        "enableStatistics": %b
+                        "modulate": %b
                     }
-                    """.formatted(name, className, type.name(), interval, modulate, enableStatistics);
+                    """.formatted(name, className, type.name(), interval, modulate);
         }
     }
 
@@ -95,7 +92,6 @@ public class BatchConfiguration {
         String className = batchClass.getCanonicalName();
         String interval = annotation.interval();
         boolean modulate = annotation.modulate();
-        boolean enableStatistics = annotation.enableStatistics();
 
         return new BatchConfiguration.BatchConfigurationBuilder()
                 .type(type)
@@ -103,7 +99,6 @@ public class BatchConfiguration {
                 .className(className)
                 .interval(interval)
                 .modulate(modulate)
-                .enableStatistics(enableStatistics)
                 .build();
     }
 
@@ -115,9 +110,8 @@ public class BatchConfiguration {
                         "className": %s,
                         "type": %s,
                         "interval": %s,
-                        "modulate": %b,
-                        "enableStatistics": %b
+                        "modulate": %b
                     }
-                    """.formatted(name, className, type.name(), interval, modulate, enableStatistics);
+                    """.formatted(name, className, type.name(), interval, modulate);
     }
 }

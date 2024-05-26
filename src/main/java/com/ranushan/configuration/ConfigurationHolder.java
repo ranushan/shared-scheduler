@@ -6,8 +6,6 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.ranushan.constant.Constants.MAX_BATCH_HISTORY_SIZE;
-
 /**
  * An object that holds multiple configuration objects for the several configuration
  * sources.
@@ -17,7 +15,6 @@ import static com.ranushan.constant.Constants.MAX_BATCH_HISTORY_SIZE;
 public class ConfigurationHolder {
 
     protected Map<String, BatchConfiguration> batchesByClassName;
-    protected GlobalConfiguration globalConfiguration;
 
     /**
      * Builds a {@link ConfigurationHolder}, loaded with configuration data mapped from
@@ -25,7 +22,6 @@ public class ConfigurationHolder {
      */
     public ConfigurationHolder() {
         batchesByClassName = Collections.emptyMap();
-        globalConfiguration = new GlobalConfiguration(MAX_BATCH_HISTORY_SIZE);
     }
 
     /**

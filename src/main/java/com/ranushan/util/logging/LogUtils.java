@@ -16,6 +16,8 @@
 
 package com.ranushan.util.logging;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 
 import java.util.function.BiConsumer;
@@ -27,32 +29,20 @@ import static java.util.Arrays.stream;
  * Utility methods for logging.
  *
  */
-public class LogUtils
-{
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class LogUtils {
 
-    /**
-     * Private constructor to avoid instantiation
-     */
-    private LogUtils()
-    {
-        throw new UnsupportedOperationException("Instantiation not allowed");
-    }
-
-    public static void logInfoSafely(Logger logger, String pattern, LogArgument... arguments)
-    {
+    public static void logInfoSafely(Logger logger, String pattern, LogArgument... arguments) {
         logSafely(Logger::isInfoEnabled, logger::info, logger, pattern, arguments);
     }
 
-    public static void logWarnSafely(Logger logger, String pattern, LogArgument... arguments)
-    {
+    public static void logWarnSafely(Logger logger, String pattern, LogArgument... arguments) {
         logSafely(Logger::isWarnEnabled, logger::warn, logger, pattern, arguments);
     }
 
     private static void logSafely(Predicate<Logger> levelPredicate, BiConsumer<String, Object[]> loggingFunction,
-            Logger logger, String pattern, LogArgument... arguments)
-    {
-        if (levelPredicate.test(logger))
-        {
+            Logger logger, String pattern, LogArgument... arguments) {
+        if (levelPredicate.test(logger)) {
             Object[] loggableArguments = stream(arguments).map(LogArgument::getLoggableArgument).toArray(Object[]::new);
             loggingFunction.accept(pattern, loggableArguments);
         }

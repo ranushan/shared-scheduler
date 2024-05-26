@@ -62,12 +62,4 @@ public @interface Batch {
      * @return a flag determining whether interval modulation is enabled for this batch
      */
     boolean modulate() default false;
-
-    /**
-     * Indicates whether the system will process and store statistical data (e.g.:
-     * average execution duration) for this batch.
-     *
-     * @return a flag determining whether statistics are enabled for this batch
-     */
-    boolean enableStatistics() default false;
 }

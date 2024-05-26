@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * Enumerates available {@link com.ranushan.annotation.Batch} types and associated facilities.

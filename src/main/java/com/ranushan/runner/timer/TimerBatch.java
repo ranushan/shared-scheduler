@@ -14,8 +14,6 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * A thread-safe extensible Batch for tasks that are scheduled in the system to run
@@ -98,7 +96,7 @@ public abstract class TimerBatch extends AbstractBatch {
                 """
                 {
                     "interval": %s,
-                    "modulate": %s,
+                    "modulate": %s
                 }
                 """.formatted(interval, getConfiguration().isModulate());
     }
